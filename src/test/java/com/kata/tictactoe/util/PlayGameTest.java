@@ -49,7 +49,7 @@ public class PlayGameTest {
     }
 
     @Test
-    public void testWinnerInRow(){
+    public void testWinnerHorizontally(){
 
         // Initialize grid
         int nbOfRowsAndCols=3;
@@ -62,10 +62,28 @@ public class PlayGameTest {
         playGame.playMove(grid, 1, 2,PlayerType.O);
 
         // Assert true if win
-        assertTrue(playGame.isWinnerInRow(grid,PlayerType.O));
+        assertTrue(playGame.isWinnerHorizontally(grid,PlayerType.O));
 
     }
 
+
+    @Test
+    public void testWinnerVertically(){
+
+        // Initialize grid
+        int nbOfRowsAndCols=3;
+        List<List<Cell>> grid = GameInitializer.getGameGrid(nbOfRowsAndCols);
+
+        // Play a move
+        PlayGame playGame=new PlayGame();
+        playGame.playMove(grid, 0, 0,PlayerType.O);
+        playGame.playMove(grid, 1, 0,PlayerType.O);
+        playGame.playMove(grid, 2, 0,PlayerType.O);
+
+        // Assert true if win
+        assertTrue(playGame.isWinnerVertically(grid,PlayerType.O));
+
+    }
 
 
 }

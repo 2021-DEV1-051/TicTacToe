@@ -1,7 +1,9 @@
 package com.kata.tictactoe.util;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class PlayGame {
 
@@ -38,10 +40,27 @@ public class PlayGame {
      * @param playerType - Player X or O
      * @return true if all cells in a row are played by a player
      */
-    public boolean isWinnerInRow(List<List<Cell>> grid,PlayerType playerType){
+    public boolean isWinnerHorizontally(List<List<Cell>> grid,PlayerType playerType){
         boolean allMatch=false;
         for (List<Cell> cells : grid) {
             allMatch = cells.stream().allMatch((value) -> Objects.equals(value.getPlayer(), playerType.toString()));
+            if (allMatch) break;
+        }
+        return allMatch;
+    }
+
+    /**
+     * This method evaluates if player wins vertically
+     *
+     * @param grid - Game grid
+     * @param playerType - Player X or O
+     * @return true if all cells in a column are played by a player
+     */
+    public boolean isWinnerVertically(List<List<Cell>> grid,PlayerType playerType){
+        boolean allMatch=false;
+        for(int i=0;i<grid.size();i++){
+            allMatch = grid.stream().flatMap(Collection::stream).collect(Collectors.groupingBy(Cell::getCol)).get(i)
+                    .stream().allMatch((value) -> Objects.equals(value.getPlayer(), playerType.toString()));
             if (allMatch) break;
         }
         return allMatch;
