@@ -101,5 +101,22 @@ public class PlayGameTest {
         assertTrue(playGame.isWinnerDiagonalTopLeftToBottomRight(grid,PlayerType.O));
     }
 
+    @Test
+    public void testWinnerDiagonalTopRightToBottomLeft(){
+
+        // Initialize grid
+        int nbOfRowsAndCols=3;
+        List<List<Cell>> grid = GameInitializer.getGameGrid(nbOfRowsAndCols);
+
+        // Play a move
+        PlayGame playGame=new PlayGame();
+        playGame.playMove(grid, 0, 2,PlayerType.O);
+        playGame.playMove(grid, 1, 1,PlayerType.O);
+        playGame.playMove(grid, 2, 0,PlayerType.O);
+
+        // Assert true if win
+        assertTrue(playGame.isWinnerDiagonalBottomLeftToTopRight(grid,PlayerType.O));
+    }
+
 
 }

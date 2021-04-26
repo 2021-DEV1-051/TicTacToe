@@ -79,6 +79,19 @@ public class PlayGame {
                 .allMatch(cell -> Objects.equals(cell.getPlayer(), playerType.toString()));
     }
 
+    /**
+     * This method evaluates if player wins diagonally from the bottom left to the top right
+     *
+     * @param grid - Game grid
+     * @param playerType - Player X or O
+     * @return true if all cells in diagonal are played by a player
+     */
+    public boolean isWinnerDiagonalBottomLeftToTopRight(List<List<Cell>> grid,PlayerType playerType){
+        return grid.stream().flatMap(Collection::stream)
+                .filter(cells -> (cells.getRow()+cells.getCol())==(grid.size()-1))
+                .allMatch(cell -> Objects.equals(cell.getPlayer(), playerType.toString()));
+    }
+
 
 
 }
