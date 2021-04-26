@@ -48,6 +48,24 @@ public class PlayGameTest {
         assertFalse(playGame.isCellBlank(grid,playedRow, playedCol));
     }
 
+    @Test
+    public void testWinnerInRow(){
+
+        // Initialize grid
+        int nbOfRowsAndCols=3;
+        List<List<Cell>> grid = GameInitializer.getGameGrid(nbOfRowsAndCols);
+
+        // Play a move
+        PlayGame playGame=new PlayGame();
+        playGame.playMove(grid, 1, 0,PlayerType.O);
+        playGame.playMove(grid, 1, 1,PlayerType.O);
+        playGame.playMove(grid, 1, 2,PlayerType.O);
+
+        // Assert true if win
+        assertTrue(playGame.isWinnerInRow(grid,PlayerType.O));
+
+    }
+
 
 
 }
