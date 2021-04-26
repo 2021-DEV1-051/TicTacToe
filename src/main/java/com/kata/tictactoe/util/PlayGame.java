@@ -92,6 +92,17 @@ public class PlayGame {
                 .allMatch(cell -> Objects.equals(cell.getPlayer(), playerType.toString()));
     }
 
+    /**
+     * This method evaluates if game grid is full
+     *
+     * @param grid - Game grid
+     * @return true if all cells are placed
+     */
+    public boolean isGridFull(List<List<Cell>> grid){
+        return grid.stream().flatMap(Collection::stream)
+                .noneMatch(cell-> Objects.equals(cell.getPlayer(), PlayerType.BLANK.toString()));
+    }
+
 
 
 }
