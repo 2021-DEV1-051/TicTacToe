@@ -20,7 +20,7 @@ public class GameInitializer {
             // This for loop is for columns
             for(int col = 0; col< nbOfRowsAndCols; col++){
                 // Set default values for a cell
-                listCells.add(new Cell(row,col,Player.BLANK.toString()));
+                listCells.add(new Cell(row,col, PlayerType.BLANK.toString()));
             }
             grid.add(listCells);
         }

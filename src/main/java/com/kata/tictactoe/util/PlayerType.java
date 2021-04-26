@@ -1,6 +1,6 @@
 package com.kata.tictactoe.util;
 
-public enum Player {
+public enum PlayerType {
 
     BLANK(" "),
     X("X"),
@@ -9,7 +9,7 @@ public enum Player {
 
     private final String text;
 
-    Player(String text) {
+    PlayerType(String text) {
         this.text = text;
     }
 
