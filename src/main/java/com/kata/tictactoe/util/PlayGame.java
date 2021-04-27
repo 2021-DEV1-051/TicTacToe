@@ -103,6 +103,16 @@ public class PlayGame {
                 .noneMatch(cell-> Objects.equals(cell.getPlayer(), PlayerType.BLANK.toString()));
     }
 
+    /**
+     * This method switches player between X and O
+     *
+     * @param playerType - Player X or O
+     * @return true other player type
+     */
+    public PlayerType switchPlayers(PlayerType playerType){
+        return Objects.equals(playerType,PlayerType.X)?PlayerType.O:PlayerType.X;
+    }
+
 
 
 }

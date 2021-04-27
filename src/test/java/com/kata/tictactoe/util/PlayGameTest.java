@@ -139,8 +139,18 @@ public class PlayGameTest {
         playGame.playMove(grid, 2, 1,PlayerType.O);
         playGame.playMove(grid, 2, 2,PlayerType.O);
 
-        // Assert true if win
+        // Assert true if grid is full
         assertTrue(playGame.isGridFull(grid));
+    }
+
+    @Test
+    public void testSwitchPlayers(){
+
+        // Initialize PlayGame
+        PlayGame playGame=new PlayGame();
+
+        // Assert true if Player X is switch to Player O
+        assertEquals(PlayerType.O,playGame.switchPlayers(PlayerType.X));
     }
 
 
