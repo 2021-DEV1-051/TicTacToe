@@ -72,10 +72,25 @@ public class IndexController {
         // Set grid in session that will be used by the View to display data
         session.setAttribute("grid", grid);
 
+        // Evaluate if player wins and return current player wins
+        if(hasPlayerWon()){
+            session.setAttribute("game_status", "Player "+playerType+" won");
+            session.setAttribute("win", true);
+            return "index";
+        }
+
         // Switch to the next player
         playerType=playGame.switchPlayers(playerType);
         session.setAttribute("current_player", playerType+"'s Turn");
         return "index";
+    }
+
+    private boolean hasPlayerWon(){
+        return playGame.isWinnerHorizontally(grid,playerType) ||
+                playGame.isWinnerVertically(grid,playerType )||
+                playGame.isWinnerDiagonalBottomLeftToTopRight(grid,playerType) ||
+                playGame.isWinnerDiagonalTopLeftToBottomRight(grid,playerType);
+
     }
 
 }

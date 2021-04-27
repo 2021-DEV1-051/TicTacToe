@@ -47,7 +47,8 @@ public class IndexControllerTest {
     @Test
     public void testPlayingGamePage() throws Exception {
 
-        grid.get(1).get(1).setPlayer(PlayerType.X.toString());
+        grid.get(1).get(0).setPlayer(PlayerType.X.toString());
+        grid.get(1).get(2).setPlayer(PlayerType.X.toString());
 
         MockHttpSession session = new MockHttpSession();
         session.setAttribute("grid",grid);
@@ -58,6 +59,7 @@ public class IndexControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
                 .andExpect(request().sessionAttribute("grid",grid))
-                .andExpect(request().sessionAttribute("game_status",GameStatus.CELL_BUSY.toString()));
+                .andExpect(request().sessionAttribute("game_status","Player "+ PlayerType.X +" won"))
+                .andExpect(request().sessionAttribute("win",true));
     }
 }
