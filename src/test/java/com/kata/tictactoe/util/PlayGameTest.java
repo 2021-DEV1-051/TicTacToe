@@ -1,5 +1,6 @@
 package com.kata.tictactoe.util;
 
+import com.kata.tictactoe.enums.PlayerType;
 import org.junit.jupiter.api.Test;
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;

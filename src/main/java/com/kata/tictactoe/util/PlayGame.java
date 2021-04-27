@@ -1,5 +1,7 @@
 package com.kata.tictactoe.util;
 
+import com.kata.tictactoe.enums.PlayerType;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;

@@ -47,13 +47,7 @@
 /*    !* 	font-size-adjust: 1.5em; *!*/
 /*}*/
 
-/*.reset_btn{*/
-/*    color:white;*/
-/*    margin-top: 20px;*/
-/*    font-size: 20px;*/
-/*    background-color: gray;*/
-/*    text-decoration: none;*/
-/*}*/
+
 
 /*.win_msg{*/
 /*    color: green;*/
@@ -81,6 +75,13 @@ body{
 }
 .welcome{
     text-align: center;
+}
+.reset_btn{
+    color:white;
+    margin-top: 20px;
+    font-size: 20px;
+    background-color: gray;
+    text-decoration: none;
 }
 .select-box, .play-board, .result-box{
     /*position: absolute;*/
@@ -242,11 +243,11 @@ body{
     border-radius: 5px;
     max-width: 400px;
     width: 100%;
-    opacity: 0;
+    /*opacity: 0;*/
     text-align: center;
     background: #fff;
-    pointer-events: none;
-    transform: translate(-50%, -50%) scale(0.9);
+    /*pointer-events: none;*/
+    /*transform: translate(-50%, -50%) scale(0.9);*/
 }
 .result-box.show{
     opacity: 1;
@@ -263,13 +264,13 @@ body{
     font-weight: 600;
     margin: 0 5px;
 }
-.result-box .btn{
+.result-box .a{
     width: 100%;
     margin-top: 25px;
     display: flex;
     justify-content: center;
 }
-.btn button{
+.btn a{
     font-size: 18px;
     font-weight: 500;
     padding: 8px 20px;

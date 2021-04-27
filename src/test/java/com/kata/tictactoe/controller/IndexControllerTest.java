@@ -1,16 +1,16 @@
 package com.kata.tictactoe.controller;
 
+import com.kata.tictactoe.enums.GameStatus;
+import com.kata.tictactoe.enums.PlayerType;
 import com.kata.tictactoe.util.Cell;
 import com.kata.tictactoe.util.GameInitializer;
-import com.kata.tictactoe.util.PlayGame;
-import com.kata.tictactoe.util.PlayerType;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
@@ -40,16 +40,24 @@ public class IndexControllerTest {
                 .accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
-                .andExpect(model().attribute("welcome_msg", equalTo("Welcome To Tic Tac Toe Game")))
-                .andExpect(model().attribute("grid",grid));
+                .andExpect(request().sessionAttribute("welcome_msg", equalTo("Welcome To Tic Tac Toe Game")))
+                .andExpect(request().sessionAttribute("grid",grid));
     }
 
     @Test
     public void testPlayingGamePage() throws Exception {
 
+        grid.get(1).get(1).setPlayer(PlayerType.X.toString());
+        grid.clear();
+
+        MockHttpSession session = new MockHttpSession();
+        session.setAttribute("grid",grid);
+
         mockMvc.perform(get("/playing?row=1&col=1")
+                .session(session)
                 .accept(MediaType.TEXT_HTML))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/"));
+                .andExpect(view().name("redirect:/"))
+                .andExpect(request().sessionAttribute("grid",grid));
     }
 }
