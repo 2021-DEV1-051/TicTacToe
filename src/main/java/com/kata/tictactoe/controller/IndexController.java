@@ -78,6 +78,11 @@ public class IndexController {
             session.setAttribute("win", true);
             return "index";
         }
+        // Evaluate if game grid board is full and return "Draw. No winner"
+        if(playGame.isGridFull(grid)){
+            session.setAttribute("game_status", GameStatus.GAME_DRAW.toString());
+            return "index";
+        }
 
         // Switch to the next player
         playerType=playGame.switchPlayers(playerType);
