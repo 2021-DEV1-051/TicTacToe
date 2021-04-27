@@ -48,7 +48,6 @@ public class IndexControllerTest {
     public void testPlayingGamePage() throws Exception {
 
         grid.get(1).get(1).setPlayer(PlayerType.X.toString());
-        grid.clear();
 
         MockHttpSession session = new MockHttpSession();
         session.setAttribute("grid",grid);
@@ -56,8 +55,9 @@ public class IndexControllerTest {
         mockMvc.perform(get("/playing?row=1&col=1")
                 .session(session)
                 .accept(MediaType.TEXT_HTML))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/"))
-                .andExpect(request().sessionAttribute("grid",grid));
+                .andExpect(status().isOk())
+                .andExpect(view().name("index"))
+                .andExpect(request().sessionAttribute("grid",grid))
+                .andExpect(request().sessionAttribute("game_status",GameStatus.CELL_BUSY.toString()));
     }
 }

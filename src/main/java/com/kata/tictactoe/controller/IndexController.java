@@ -48,6 +48,7 @@ public class IndexController {
     /**
      * Method called when users start playing
      */
+    @SuppressWarnings("unchecked")
     @GetMapping("/playing")
     public String startGame(HttpSession session, @RequestParam(name = "row") int row, @RequestParam(name = "col") int col) {
 
@@ -56,7 +57,6 @@ public class IndexController {
 
         // If Game grid is not set (grid with 0 row and 0 col), redirect to index to reinitialize game
         if(grid.size()==0) {
-            //grid= GameInitializer.getGameGrid(3);
             return "redirect:/";
         }
 
