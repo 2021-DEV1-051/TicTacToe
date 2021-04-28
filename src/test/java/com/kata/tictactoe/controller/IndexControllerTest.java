@@ -1,5 +1,6 @@
 package com.kata.tictactoe.controller;
 
+import com.kata.tictactoe.util.Constants;
 import com.kata.tictactoe.enums.GameStatus;
 import com.kata.tictactoe.enums.PlayerType;
 import com.kata.tictactoe.util.Cell;
@@ -30,7 +31,7 @@ public class IndexControllerTest {
 
     @BeforeEach
     void setUp() {
-        grid= GameInitializer.getGameGrid(3);
+        grid= GameInitializer.getGameGrid(Constants.NBR_OF_ROW_COL);
 
     }
 

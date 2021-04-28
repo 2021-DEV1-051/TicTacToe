@@ -16,11 +16,9 @@ public class PlayGame {
      * @param playedRow - Row index
      * @param playedCol - Column index
      * @param playerType - Player X or O
-     * @return updated grid
      */
-    public List<List<Cell>> playMove(List<List<Cell>> grid, int playedRow, int playedCol, PlayerType playerType) {
+    public void playMove(List<List<Cell>> grid, int playedRow, int playedCol, PlayerType playerType) {
         grid.get(playedRow).get(playedCol).setPlayer(playerType.toString());
-        return grid;
     }
 
     /**
