@@ -5,7 +5,7 @@ This application is a Spring Boot MVC application. It was developed as Maven Pro
 
 ## Prerequisites
 
-1. Make sure JDK 11 is installed.
+1. Make sure JDK 8 or higher is installed.
 
 2. Make sure Maven 3.6.3 or higher is installed.
 
